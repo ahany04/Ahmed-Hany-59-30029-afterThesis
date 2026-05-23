@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  FinSight AI — Use Case Diagram
+  ============================================================
+  Generated with: Bolt.new (StackBlitz)
+  Framework:      Vanilla HTML / CSS / SVG
+  Version:        1.0.0
+  Description:    Use Case Diagram for Predictive Financial
+                  Analysis — Chapter 3, Figure 3.1
+  ============================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FinSight AI — Use Case Diagram</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ══════════════════════════════════════════════
+       DESIGN TOKENS
+    ══════════════════════════════════════════════ */
+    :root {
+      --bg:              #f2f4f8;
+      --surface:         #ffffff;
+      --border:          #dde1ea;
+      --text:            #1a1d27;
+      --muted:           #7a7f96;
+
+      --actor-green:     #2e7d42;
+      --actor-fill:      #eaf5ec;
+      --actor-purple:    #6b21a8;
+      --actor-purple-fill: #f5f0ff;
+
+      --uc-fill:         #ffffff;
+      --uc-stroke:       #4b5280;
+      --uc-ai-fill:      #ede9fe;
+      --uc-ai-stroke:    #7c3aed;
+
+      --system-bg:       #e8eaef;
+      --system-stroke:   #9ca3af;
+
+      --arrow-green:     #2e7d42;
+      --arrow-purple:    #7c3aed;
+
+      --font-ui:   'DM Sans', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
+
+    /* ══════════════════════════════════════════════
+       RESET & BASE
+    ══════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      font-family: var(--font-ui);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ══════════════════════════════════════════════
+       PAGE HEADER
+    ══════════════════════════════════════════════ */
+    .page-header {
+      width: 100%;
+      max-width: 860px;
+      margin-bottom: 24px;
+    }
+
+    .page-header__eyebrow {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .page-header__title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .page-header__sub {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ══════════════════════════════════════════════
+       DIAGRAM CARD
+    ══════════════════════════════════════════════ */
+    .diagram-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 36px 28px;
+      width: 100%;
+      max-width: 860px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+
+    svg {
+      display: block;
+      margin: 0 auto;
+      font-family: 'DM Sans', sans-serif;
+      overflow: visible;
+    }
+
+    .diagram-caption {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 20px;
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <div class="page-header__eyebrow">FinSight AI · Chapter 3 · Figure 3.1</div>
+    <h1 class="page-header__title">Use Case Diagram</h1>
+    <p class="page-header__sub">Predictive Financial Analysis — System Actors &amp; Interactions</p>
+  </div>
+
+  <div class="diagram-card">
+    <svg width="780" height="420" viewBox="0 0 780 420" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Green arrowhead (Financial Analyst associations) -->
+        <marker id="arr-green" markerWidth="11" markerHeight="8"
+                refX="10" refY="4" orient="auto">
+          <polygon points="0 0, 11 4, 0 8" fill="#2e7d42"/>
+        </marker>
+        <!-- Purple arrowhead (AI Engine associations) -->
+        <marker id="arr-purple" markerWidth="11" markerHeight="8"
+                refX="10" refY="4" orient="auto">
+          <polygon points="0 0, 11 4, 0 8" fill="#7c3aed"/>
+        </marker>
+
+        <!-- Drop shadow filter -->
+        <filter id="card-shadow" x="-10%" y="-10%" width="120%" height="120%">
+          <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#00000018"/>
+        </filter>
+      </defs>
+
+      <!-- ════════════════════════════════════════
+           SYSTEM BOUNDARY
+      ════════════════════════════════════════ -->
+      <rect x="148" y="38" width="492" height="348" rx="12"
+            fill="#e8eaef" stroke="#9ca3af" stroke-width="1.8"
+            filter="url(#card-shadow)"/>
+
+      <!-- System title bar -->
+      <rect x="148" y="38" width="492" height="36" rx="12"
+            fill="#d1d5e0" stroke="#9ca3af" stroke-width="1.8"/>
+      <!-- clip bottom corners of title bar -->
+      <rect x="148" y="56" width="492" height="18" fill="#d1d5e0"/>
+
+      <text x="394" y="62" font-family="'DM Sans',sans-serif"
+            font-size="14" font-weight="700" fill="#1a1d27"
+            text-anchor="middle" dominant-baseline="middle">
+        Predictive Financial Analysis
+      </text>
+
+      <!-- ════════════════════════════════════════
+           USE CASE ELLIPSES — LEFT (Analyst-facing)
+      ════════════════════════════════════════ -->
+
+      <!-- UC1: Select Period & Dataset (FR-01) -->
+      <ellipse cx="284" cy="168" rx="92" ry="48"
+               fill="#ffffff" stroke="#4b5280" stroke-width="1.6"
+               filter="url(#card-shadow)"/>
+      <text x="284" y="158" font-family="'DM Sans',sans-serif"
+            font-size="12.5" font-weight="600" fill="#1a1d27"
+            text-anchor="middle">Select Period &amp;</text>
+      <text x="284" y="173" font-family="'DM Sans',sans-serif"
+            font-size="12.5" font-weight="600" fill="#1a1d27"
+            text-anchor="middle">Dataset</text>
+      <text x="284" y="189" font-family="'IBM Plex Mono',monospace"
+            font-size="10" fill="#7a7f96"
+            text-anchor="middle">(FR-01)</text>
+
+      <!-- UC2: Use Forecast in Planning (PA-02) -->
+      <ellipse cx="284" cy="318" rx="92" ry="48"
+               fill="#ffffff" stroke="#4b5280" stroke-width="1.6"
+               filter="url(#card-shadow)"/>
+      <text x="284" y="308" font-family="'DM Sans',sans-serif"
+            font-size="12.5" font-weight="600" fill="#1a1d27"
+            text-anchor="middle">Use Forecast</text>
+      <text x="284" y="323" font-family="'DM Sans',sans-serif"
+            font-size="12.5" font-weight="600" fill="#1a1d27"
+            text-anchor="middle">in Planning</text>
+      <text x="284" y="339" font-family="'IBM Plex Mono',monospace"
+            font-size="10" fill="#7a7f96"
+            text-anchor="middle">(PA-02)</text>
+
+      <!-- ════════════════════════════════════════
+           USE CASE ELLIPSES — RIGHT (AI Engine-facing)
+      ════════════════════════════════════════ -->
+
+      <!-- UC3: Model Trends & Forecast KPIs (AI-04) -->
+      <ellipse cx="530" cy="192" rx="96" ry="48"
+               fill="#ede9fe" stroke="#7c3aed" stroke-width="1.6"
+               filter="url(#card-shadow)"/>
+      <text x="530" y="181" font-family="'DM Sans',sans-serif"
+            font-size="12.5" font-weight="600" fill="#3b0764"
+            text-anchor="middle">Model Trends</text>
+      <text x="530" y="196" font-family="'DM Sans',sans-serif"
+            font-size="12.5" font-weight="600" fill="#3b0764"
+            text-anchor="middle">&amp; Forecast KPIs</text>
+      <text x="530" y="212" font-family="'IBM Plex Mono',monospace"
+            font-size="10" fill="#7c3aed"
+            text-anchor="middle">(AI-04)</text>
+
+      <!-- UC4: Explain Results with SHAP (AI-05) -->
+      <ellipse cx="530" cy="316" rx="96" ry="48"
+               fill="#ede9fe" stroke="#7c3aed" stroke-width="1.6"
+               filter="url(#card-shadow)"/>
+      <text x="530" y="305" font-family="'DM Sans',sans-serif"
+            font-size="12.5" font-weight="600" fill="#3b0764"
+            text-anchor="middle">Explain Results</text>
+      <text x="530" y="320" font-family="'DM Sans',sans-serif"
+            font-size="12.5" font-weight="600" fill="#3b0764"
+            text-anchor="middle">with SHAP</text>
+      <text x="530" y="336" font-family="'IBM Plex Mono',monospace"
+            font-size="10" fill="#7c3aed"
+            text-anchor="middle">(AI-05)</text>
+
+      <!-- ════════════════════════════════════════
+           ACTOR: Financial Analyst (LEFT)
+      ════════════════════════════════════════ -->
+      <!-- Head -->
+      <circle cx="72" cy="202" r="20"
+              fill="#eaf5ec" stroke="#2e7d42" stroke-width="2.2"/>
+      <!-- Body -->
+      <line x1="72" y1="222" x2="72" y2="276"
+            stroke="#2e7d42" stroke-width="2.2"/>
+      <!-- Arms -->
+      <line x1="42" y1="248" x2="102" y2="248"
+            stroke="#2e7d42" stroke-width="2.2"/>
+      <!-- Left leg -->
+      <line x1="72" y1="276" x2="48" y2="312"
+            stroke="#2e7d42" stroke-width="2.2"/>
+      <!-- Right leg -->
+      <line x1="72" y1="276" x2="96" y2="312"
+            stroke="#2e7d42" stroke-width="2.2"/>
+      <!-- Label -->
+      <text x="72" y="328" font-family="'DM Sans',sans-serif"
+            font-size="12" font-weight="700" fill="#1a1d27"
+            text-anchor="middle">Financial</text>
+      <text x="72" y="344" font-family="'DM Sans',sans-serif"
+            font-size="12" font-weight="700" fill="#1a1d27"
+            text-anchor="middle">Analyst</text>
+
+      <!-- ════════════════════════════════════════
+           ACTOR: AI Engine (RIGHT)
+      ════════════════════════════════════════ -->
+      <!-- Head -->
+      <circle cx="710" cy="230" r="20"
+              fill="#f5f0ff" stroke="#7c3aed" stroke-width="2.2"/>
+      <!-- Body -->
+      <line x1="710" y1="250" x2="710" y2="304"
+            stroke="#7c3aed" stroke-width="2.2"/>
+      <!-- Arms -->
+      <line x1="680" y1="276" x2="740" y2="276"
+            stroke="#7c3aed" stroke-width="2.2"/>
+      <!-- Left leg -->
+      <line x1="710" y1="304" x2="686" y2="340"
+            stroke="#7c3aed" stroke-width="2.2"/>
+      <!-- Right leg -->
+      <line x1="710" y1="304" x2="734" y2="340"
+            stroke="#7c3aed" stroke-width="2.2"/>
+      <!-- Label -->
+      <text x="710" y="358" font-family="'DM Sans',sans-serif"
+            font-size="12" font-weight="700" fill="#6b21a8"
+            text-anchor="middle">AI Engine</text>
+      <text x="710" y="374" font-family="'DM Sans',sans-serif"
+            font-size="12" font-weight="700" fill="#6b21a8"
+            text-anchor="middle">(ML/MD)</text>
+
+      <!-- ════════════════════════════════════════
+           ASSOCIATIONS — Financial Analyst (green)
+      ════════════════════════════════════════ -->
+      <!-- Analyst → Select Period & Dataset -->
+      <line x1="94" y1="214" x2="190" y2="175"
+            stroke="#2e7d42" stroke-width="1.8"
+            fill="none" marker-end="url(#arr-green)"/>
+
+      <!-- Analyst → Use Forecast in Planning -->
+      <line x1="94" y1="258" x2="190" y2="310"
+            stroke="#2e7d42" stroke-width="1.8"
+            fill="none" marker-end="url(#arr-green)"/>
+
+      <!-- ════════════════════════════════════════
+           ASSOCIATIONS — AI Engine (purple)
+      ════════════════════════════════════════ -->
+      <!-- AI Engine → Model Trends & Forecast KPIs -->
+      <line x1="688" y1="238" x2="628" y2="208"
+            stroke="#7c3aed" stroke-width="1.8"
+            fill="none" marker-end="url(#arr-purple)"/>
+
+      <!-- AI Engine → Explain Results with SHAP -->
+      <line x1="688" y1="260" x2="628" y2="300"
+            stroke="#7c3aed" stroke-width="1.8"
+            fill="none" marker-end="url(#arr-purple)"/>
+
+    </svg>
+
+    <p class="diagram-caption">Figure 3.1 — Use Case Diagram: Predictive Financial Analysis System</p>
+  </div>
+
+</body>
+</html>

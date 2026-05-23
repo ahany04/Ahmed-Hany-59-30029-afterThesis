@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  FinSight AI — BPMN Diagram
+  ============================================================
+  Generated with: Bolt.new (StackBlitz)
+  Framework:      Vanilla HTML / CSS / SVG
+  Version:        1.0.0
+  Description:    BPMN 2.0 Process Diagram for the AI Financial
+                  Reporting System — Chapter 3, Figure 3.2
+                  Pools:
+                    Lane 1 — Financial Analyst
+                    Lane 2 — AI Engine (AI Financial Reporting System)
+                    Lane 3 — Manager
+  ============================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FinSight AI — BPMN Diagram</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ══════════════════════════════════════════════
+       DESIGN TOKENS
+    ══════════════════════════════════════════════ */
+    :root {
+      --bg:           #f0f2f7;
+      --surface:      #ffffff;
+      --border:       #d8dde8;
+      --text:         #1a1d27;
+      --muted:        #7a7f96;
+
+      --pool-label-bg:  #e2e7f5;
+      --pool-border:    #b0bcd8;
+
+      --lane1-bg:     #ffffff;
+      --lane1-label:  #e8edf8;
+      --lane2-bg:     #dbeafe;
+      --lane2-label:  #bfdbfe;
+      --lane3-bg:     #fefce8;
+      --lane3-label:  #fef08a;
+
+      --task-fill:    #dbeafe;
+      --task-stroke:  #3b82f6;
+      --task-text:    #1e3a5f;
+
+      --mgr-task-fill:   #fef9c3;
+      --mgr-task-stroke: #ca8a04;
+      --mgr-task-text:   #78350f;
+
+      --gw-fill:      #fef9c3;
+      --gw-stroke:    #d97706;
+
+      --seq-dark:     #374151;
+      --seq-gray:     #6b7280;
+      --seq-yes:      #16a34a;
+      --seq-no:       #dc2626;
+
+      --font-ui:   'DM Sans', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
+
+    /* ══════════════════════════════════════════════
+       RESET & BASE
+    ══════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      font-family: var(--font-ui);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 24px 60px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ══════════════════════════════════════════════
+       PAGE HEADER
+    ══════════════════════════════════════════════ */
+    .page-header {
+      width: 100%;
+      max-width: 980px;
+      margin-bottom: 24px;
+    }
+
+    .page-header__eyebrow {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .page-header__title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .page-header__sub {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ══════════════════════════════════════════════
+       DIAGRAM CARD
+    ══════════════════════════════════════════════ */
+    .diagram-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 32px 28px;
+      width: 100%;
+      max-width: 980px;
+      box-shadow: 0 4px 28px rgba(0,0,0,0.07);
+      overflow-x: auto;
+    }
+
+    svg {
+      display: block;
+      margin: 0 auto;
+      font-family: 'DM Sans', sans-serif;
+      overflow: visible;
+    }
+
+    .diagram-caption {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 20px;
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <div class="page-header__eyebrow">FinSight AI · Chapter 3 · Figure 3.2</div>
+    <h1 class="page-header__title">BPMN Diagram</h1>
+    <p class="page-header__sub">AI Financial Reporting System — End-to-End Process Workflow</p>
+  </div>
+
+  <div class="diagram-card">
+    <svg width="900" height="582" viewBox="0 0 900 582"
+         xmlns="http://www.w3.org/2000/svg">
+      <defs>
+
+        <!-- ── Arrowheads ── -->
+        <marker id="arr-dark" markerWidth="10" markerHeight="7"
+                refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#374151"/>
+        </marker>
+        <marker id="arr-gray" markerWidth="10" markerHeight="7"
+                refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"/>
+        </marker>
+        <marker id="arr-yes" markerWidth="10" markerHeight="7"
+                refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/>
+        </marker>
+        <marker id="arr-no" markerWidth="10" markerHeight="7"
+                refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/>
+        </marker>
+
+        <!-- ── Drop shadow ── -->
+        <filter id="soft-shadow" x="-10%" y="-10%" width="130%" height="130%">
+          <feDropShadow dx="0" dy="1" stdDeviation="3" flood-color="#0000001a"/>
+        </filter>
+
+      </defs>
+
+      <!-- ══════════════════════════════════════════
+           POOL OUTER BORDER
+      ══════════════════════════════════════════ -->
+      <rect x="30" y="28" width="852" height="526" rx="10"
+            fill="none" stroke="#b0bcd8" stroke-width="2"/>
+
+      <!-- Pool label strip -->
+      <rect x="30" y="28" width="34" height="526" rx="10"
+            fill="#e2e7f5" stroke="#b0bcd8" stroke-width="1.8"/>
+      <!-- right side of label strip (unrounded) -->
+      <rect x="50" y="28" width="14" height="526" fill="#e2e7f5"/>
+
+      <!-- Pool label text -->
+      <text transform="translate(47,291) rotate(-90)"
+            font-family="'DM Sans',sans-serif"
+            font-size="11" font-weight="700" fill="#374151"
+            text-anchor="middle" dominant-baseline="middle">
+        AI Financial Reporting System
+      </text>
+
+      <!-- ══════════════════════════════════════════
+           LANE 1 — FINANCIAL ANALYST  y=28 → 210
+      ══════════════════════════════════════════ -->
+      <rect x="64" y="28" width="818" height="182"
+            fill="#ffffff" stroke="#b0bcd8" stroke-width="1.2"/>
+      <!-- lane label strip -->
+      <rect x="64" y="28" width="28" height="182"
+            fill="#e8edf8" stroke="#b0bcd8" stroke-width="1"/>
+      <text transform="translate(78,119) rotate(-90)"
+            font-family="'DM Sans',sans-serif"
+            font-size="10" font-weight="600" fill="#7a7f96"
+            text-anchor="middle" dominant-baseline="middle">
+        Financial Analyst
+      </text>
+
+      <!-- ══════════════════════════════════════════
+           LANE 2 — AI ENGINE  y=210 → 392
+      ══════════════════════════════════════════ -->
+      <rect x="64" y="210" width="818" height="182"
+            fill="#dbeafe" stroke="#b0bcd8" stroke-width="1.2"/>
+      <!-- lane label strip -->
+      <rect x="64" y="210" width="28" height="182"
+            fill="#bfdbfe" stroke="#b0bcd8" stroke-width="1"/>
+      <text transform="translate(78,301) rotate(-90)"
+            font-family="'DM Sans',sans-serif"
+            font-size="10" font-weight="600" fill="#1e3a5f"
+            text-anchor="middle" dominant-baseline="middle">
+        AI Engine
+      </text>
+
+      <!-- ══════════════════════════════════════════
+           LANE 3 — MANAGER  y=392 → 554
+      ══════════════════════════════════════════ -->
+      <rect x="64" y="392" width="818" height="162"
+            fill="#fefce8" stroke="#b0bcd8" stroke-width="1.2"/>
+      <!-- lane label strip -->
+      <rect x="64" y="392" width="28" height="162"
+            fill="#fef08a" stroke="#b0bcd8" stroke-width="1"/>
+      <text transform="translate(78,473) rotate(-90)"
+            font-family="'DM Sans',sans-serif"
+            font-size="10" font-weight="600" fill="#78350f"
+            text-anchor="middle" dominant-baseline="middle">
+        Manager
+      </text>
+
+      <!-- ══════════════════════════════════════════
+           LANE 1 ELEMENTS — FINANCIAL ANALYST
+      ══════════════════════════════════════════ -->
+
+      <!-- START EVENT  cx=122 cy=119 -->
+      <circle cx="122" cy="119" r="18"
+              fill="#ffffff" stroke="#374151" stroke-width="2.2"
+              filter="url(#soft-shadow)"/>
+      <!-- envelope icon inside start -->
+      <rect x="113" y="111" width="18" height="13" rx="1.5"
+            fill="none" stroke="#374151" stroke-width="1.4"/>
+      <polyline points="113,111 122,119 131,111"
+                fill="none" stroke="#374151" stroke-width="1.4"/>
+      <text x="122" y="148" font-family="'DM Sans',sans-serif"
+            font-size="10" fill="#374151" text-anchor="middle">Start</text>
+
+      <!-- TASK: Select & Upload Dataset  x=156 y=91 w=124 h=56 -->
+      <rect x="156" y="91" width="124" height="56" rx="7"
+            fill="#dbeafe" stroke="#3b82f6" stroke-width="1.8"
+            filter="url(#soft-shadow)"/>
+      <text x="218" y="111" font-family="'DM Sans',sans-serif"
+            font-size="11.5" font-weight="600" fill="#1e3a5f"
+            text-anchor="middle">Select &amp; Upload</text>
+      <text x="218" y="127" font-family="'DM Sans',sans-serif"
+            font-size="10" fill="#5a7fa8" text-anchor="middle">Dataset</text>
+      <!-- gear icon -->
+      <text x="163" y="104" font-size="11" fill="#3b82f6">⚙</text>
+
+      <!-- TASK: Set Forecast Parameters  x=302 y=91 w=124 h=56 -->
+      <rect x="302" y="91" width="124" height="56" rx="7"
+            fill="#dbeafe" stroke="#3b82f6" stroke-width="1.8"
+            filter="url(#soft-shadow)"/>
+      <text x="364" y="111" font-family="'DM Sans',sans-serif"
+            font-size="11.5" font-weight="600" fill="#1e3a5f"
+            text-anchor="middle">Set Forecast</text>
+      <text x="364" y="127" font-family="'DM Sans',sans-serif"
+            font-size="10" fill="#5a7fa8" text-anchor="middle">Parameters</text>
+      <text x="309" y="104" font-size="11" fill="#3b82f6">⚙</text>
+
+      <!-- TASK: Review Charts & Trends  x=580 y=91 w=124 h=56 -->
+      <rect x="580" y="91" width="124" height="56" rx="7"
+            fill="#dbeafe" stroke="#3b82f6" stroke-width="1.8"
+            filter="url(#soft-shadow)"/>
+      <text x="642" y="108" font-family="'DM Sans',sans-serif"
+            font-size="11.5" font-weight="600" fill="#1e3a5f"
+            text-anchor="middle">Review Charts</text>
+      <text x="642" y="124" font-family="'DM Sans',sans-serif"
+            font-size="10" fill="#5a7fa8" text-anchor="middle">&amp; Trends</text>
+      <text x="587" y="104" font-size="11" fill="#3b82f6">⚙</text>
+
+      <!-- TASK: Use Forecast in Planning  x=730 y=91 w=124 h=56 -->
+      <rect x="730" y="91" width="124" height="56" rx="7"
+            fill="#dbeafe" stroke="#3b82f6" stroke-width="1.8"
+            filter="url(#soft-shadow)"/>
+      <text x="792" y="108" font-family="'DM Sans',sans-serif"
+            font-size="11.5" font-weight="600" fill="#1e3a5f"
+            text-anchor="middle">Use Forecast</text>
+      <text x="792" y="124" font-family="'DM Sans',sans-serif"
+            font-size="10" fill="#5a7fa8" text-anchor="middle">in Planning</text>
+      <text x="737" y="104" font-size="11" fill="#3b82f6">⚙</text>
+
+      <!-- END EVENT  cx=792 cy=175 -->
+      <circle cx="792" cy="175" r="16"
+              fill="#ffffff" stroke="#374151" stroke-width="5"
+              filter="url(#soft-shadow)"/>
+      <text x="792" y="201" font-family="'DM Sans',sans-serif"
+            font-size="10" fill="#374151" text-anchor="middle">End</text>
+
+      <!-- ══════════════════════════════════════════
+           LANE 2 ELEMENTS — AI ENGINE
+      ══════════════════════════════════════════ -->
+
+      <!-- TASK: Run Forecast Model  x=156 y=241 -->
+      <rect x="156" y="241" width="124" height="56" rx="7"
+            fill="#dbeafe" stroke="#3b82f6" stroke-width="1.8"
+            filter="url(#soft-shadow)"/>
+      <text x="218" y="261" font-family="'DM Sans',sans-serif"
+            font-size="11.5" font-weight="600" fill="#1e3a5f"
+            text-anchor="middle">Run Forecast</text>
+      <text x="218" y="277" font-family="'DM Sans',sans-serif"
+            font-size="10" fill="#5a7fa8" text-anchor="middle">Model</text>
+      <text x="163" y="254" font-size="11" fill="#3b82f6">⚙</text>
+
+      <!-- TASK: Predict Revenue & Expenses  x=302 y=241 -->
+      <rect x="302" y="241" width="124" height="56" rx="7"
+            fill="#dbeafe" stroke="#3b82f6" stroke-width="1.8"
+            filter="url(#soft-shadow)"/>
+      <text x="364" y="258" font-family="'DM Sans',sans-serif"
+            font-size="11.5" font-weight="600" fill="#1e3a5f"
+            text-anchor="middle">Predict Revenue</text>
+      <text x="364" y="274" font-family="'DM Sans',sans-serif"
+            font-size="10" fill="#5a7fa8" text-anchor="middle">&amp; Expenses</text>
+      <text x="309" y="254" font-size="11" fill="#3b82f6">⚙</text>
+
+      <!-- TASK: Generate Charts & Visuals  x=448 y=241 -->
+      <rect x="448" y="241" width="124" height="56" rx="7"
+            fill="#dbeafe" stroke="#3b82f6" stroke-width="1.8"
+            filter="url(#soft-shadow)"/>
+      <text x="510" y="258" font-family="'DM Sans',sans-serif"
+            font-size="11.5" font-weight="600" fill="#1e3a5f"
+            text-anchor="middle">Generate Charts</text>
+      <text x="510" y="274" font-family="'DM Sans',sans-serif"
+            font-size="10" fill="#5a7fa8" text-anchor="middle">&amp; Visuals</text>
+      <text x="455" y="254" font-size="11" fill="#3b82f6">⚙</text>
+
+      <!-- TASK: Explain Prediction  x=580 y=241 -->
+      <rect x="580" y="241" width="124" height="56" rx="7"
+            fill="#dbeafe" stroke="#3b82f6" stroke-width="1.8"
+            filter="url(#soft-shadow)"/>
+      <text x="642" y="261" font-family="'DM Sans',sans-serif"
+            font-size="11.5" font-weight="600" fill="#1e3a5f"
+            text-anchor="middle">Explain</text>
+      <text x="642" y="277" font-family="'DM Sans',sans-serif"
+            font-size="10" fill="#5a7fa8" text-anchor="middle">Prediction</text>
+      <text x="587" y="254" font-size="11" fill="#3b82f6">⚙</text>
+
+      <!-- ══════════════════════════════════════════
+           LANE 3 ELEMENTS — MANAGER
+      ══════════════════════════════════════════ -->
+
+      <!-- TASK: Review Executive Summary  x=434 y=424 -->
+      <rect x="420" y="420" width="144" height="60" rx="7"
+            fill="#fef9c3" stroke="#ca8a04" stroke-width="1.8"
+            filter="url(#soft-shadow)"/>
+      <text x="492" y="443" font-family="'DM Sans',sans-serif"
+            font-size="11.5" font-weight="600" fill="#78350f"
+            text-anchor="middle">Review Executive</text>
+      <text x="492" y="459" font-family="'DM Sans',sans-serif"
+            font-size="10" fill="#92400e" text-anchor="middle">Summary</text>
+      <!-- subprocess marker (box with +) -->
+      <rect x="484" y="471" width="16" height="12" rx="2"
+            fill="none" stroke="#ca8a04" stroke-width="1.3"/>
+      <line x1="492" y1="471" x2="492" y2="483" stroke="#ca8a04" stroke-width="1.2"/>
+      <line x1="486" y1="477" x2="498" y2="477" stroke="#ca8a04" stroke-width="1.2"/>
+
+      <!-- GATEWAY: Approved?  cx=650 cy=450 -->
+      <polygon points="650,424 680,450 650,476 620,450"
+               fill="#fef9c3" stroke="#d97706" stroke-width="1.8"
+               filter="url(#soft-shadow)"/>
+      <!-- diamond X mark -->
+      <line x1="638" y1="438" x2="662" y2="462" stroke="#d97706" stroke-width="1.5"/>
+      <line x1="662" y1="438" x2="638" y2="462" stroke="#d97706" stroke-width="1.5"/>
+      <text x="650" y="496" font-family="'DM Sans',sans-serif"
+            font-size="10" font-weight="600" fill="#374151"
+            text-anchor="middle">Approved?</text>
+
+      <!-- ══════════════════════════════════════════
+           SEQUENCE FLOWS — LANE 1
+      ══════════════════════════════════════════ -->
+
+      <!-- Start → Select & Upload -->
+      <line x1="140" y1="119" x2="154" y2="119"
+            stroke="#374151" stroke-width="1.6" fill="none"
+            marker-end="url(#arr-dark)"/>
+
+      <!-- Select & Upload → Set Forecast -->
+      <line x1="280" y1="119" x2="300" y2="119"
+            stroke="#374151" stroke-width="1.6" fill="none"
+            marker-end="url(#arr-dark)"/>
+
+      <!-- Review Charts → Use Forecast -->
+      <line x1="704" y1="119" x2="728" y2="119"
+            stroke="#374151" stroke-width="1.6" fill="none"
+            marker-end="url(#arr-dark)"/>
+
+      <!-- Use Forecast → End (down) -->
+      <line x1="792" y1="147" x2="792" y2="157"
+            stroke="#374151" stroke-width="1.6" fill="none"
+            marker-end="url(#arr-dark)"/>
+
+      <!-- ══════════════════════════════════════════
+           CROSS-LANE: Analyst → AI Engine
+      ══════════════════════════════════════════ -->
+      <!-- Set Forecast Parameters → Run Forecast Model (down) -->
+      <path d="M364,147 L364,188 L218,188 L218,239"
+            stroke="#374151" stroke-width="1.6" fill="none"
+            stroke-linejoin="round"
+            marker-end="url(#arr-dark)"/>
+
+      <!-- ══════════════════════════════════════════
+           SEQUENCE FLOWS — LANE 2 (AI Engine)
+      ══════════════════════════════════════════ -->
+
+      <!-- Run Forecast → Predict Revenue -->
+      <line x1="280" y1="269" x2="300" y2="269"
+            stroke="#374151" stroke-width="1.6" fill="none"
+            marker-end="url(#arr-dark)"/>
+
+      <!-- Predict Revenue → Generate Charts -->
+      <line x1="426" y1="269" x2="446" y2="269"
+            stroke="#374151" stroke-width="1.6" fill="none"
+            marker-end="url(#arr-dark)"/>
+
+      <!-- Generate Charts → Explain Prediction -->
+      <line x1="572" y1="269" x2="578" y2="269"
+            stroke="#374151" stroke-width="1.6" fill="none"
+            marker-end="url(#arr-dark)"/>
+
+      <!-- ══════════════════════════════════════════
+           DASHED MESSAGE FLOWS (cross-lane)
+      ══════════════════════════════════════════ -->
+
+      <!-- Generate Charts → Review Executive Summary (down to Manager) -->
+      <path d="M510,297 L510,390 L492,390 L492,418"
+            stroke="#6b7280" stroke-width="1.5"
+            stroke-dasharray="6,4" fill="none"
+            marker-end="url(#arr-gray)"/>
+
+      <!-- Explain Prediction → Review Charts (up to Lane 1) -->
+      <path d="M642,241 L642,178 L704,178"
+            stroke="#6b7280" stroke-width="1.5"
+            stroke-dasharray="6,4" fill="none"
+            marker-end="url(#arr-gray)"/>
+
+      <!-- ══════════════════════════════════════════
+           MANAGER: Review Executive → Gateway
+      ══════════════════════════════════════════ -->
+      <line x1="564" y1="450" x2="618" y2="450"
+            stroke="#374151" stroke-width="1.6" fill="none"
+            marker-end="url(#arr-dark)"/>
+
+      <!-- ══════════════════════════════════════════
+           GATEWAY FLOWS
+      ══════════════════════════════════════════ -->
+
+      <!-- YES — right side of gateway → up to Use Forecast in Planning -->
+      <path d="M680,450 L792,450 L792,191"
+            stroke="#16a34a" stroke-width="1.8" fill="none"
+            stroke-linejoin="round"
+            marker-end="url(#arr-yes)"/>
+      <text x="690" y="443" font-family="'DM Sans',sans-serif"
+            font-size="10" font-weight="700" fill="#16a34a">Yes</text>
+
+      <!-- NO — bottom of gateway → loops back left to Review Executive -->
+      <path d="M650,476 L650,530 L492,530 L492,482"
+            stroke="#dc2626" stroke-width="1.8"
+            stroke-dasharray="6,4" fill="none"
+            stroke-linejoin="round"
+            marker-end="url(#arr-no)"/>
+      <text x="608" y="526" font-family="'DM Sans',sans-serif"
+            font-size="10" font-weight="700" fill="#dc2626">No</text>
+
+    </svg>
+
+    <p class="diagram-caption">Figure 3.2 — BPMN Diagram: AI Financial Reporting System — End-to-End Workflow</p>
+  </div>
+
+</body>
+</html>
